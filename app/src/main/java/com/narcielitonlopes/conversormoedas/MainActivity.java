@@ -32,9 +32,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.button_calculate){
-           Double value = Double.valueOf(this.mViewHolder.editValue.getText().toString());
-           this.mViewHolder.textDollar.setText(String.format("%.2f", value * 3));
-           this.mViewHolder.textEuro.setText(String.format("%.2f", value * 4));
+            if(this.mViewHolder.editValue.getText() != null ||  Integer.valueOf(this.mViewHolder.editValue.getText().toString()) > 0) {
+                Double value = Double.valueOf(this.mViewHolder.editValue.getText().toString());
+                this.mViewHolder.textDollar.setText(String.format("%.2f", value / 3));
+                this.mViewHolder.textEuro.setText(String.format("%.2f", value / 4));
+            }
         }
     }
 
