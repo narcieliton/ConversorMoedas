@@ -2,6 +2,7 @@ package com.narcielitonlopes.conversormoedas;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.button_calculate){
-            if(this.mViewHolder.editValue.getText() != null ||  Integer.valueOf(this.mViewHolder.editValue.getText().toString()) > 0) {
+            if(!TextUtils.isEmpty(this.mViewHolder.editValue.getText())) {
                 Double value = Double.valueOf(this.mViewHolder.editValue.getText().toString());
                 this.mViewHolder.textDollar.setText(String.format("%.2f", value / 3));
                 this.mViewHolder.textEuro.setText(String.format("%.2f", value / 4));
